@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" role="img" aria-label="BFIT Academia">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5C518"/>
+      <stop offset="100%" stop-color="#E8A800"/>
+    </linearGradient>
+  </defs>
+  <!-- Pulse accent -->
+  <path d="M118 30 h8 l3-8 4 16 3-12 3 4 h8" fill="none" stroke="url(#gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+  <!-- B -->
+  <text x="8" y="44" font-family="Arial Black, Helvetica, sans-serif" font-size="42" font-weight="900" fill="#F5C518">B</text>
+  <!-- FIT -->
+  <text x="42" y="44" font-family="Arial Black, Helvetica, sans-serif" font-size="42" font-weight="900" fill="#FFFFFF">FIT</text>
+</svg>
