@@ -630,10 +630,9 @@
   (function days() {
     const host = $("[data-days]");
     if (!host) return;
-    const map = [-1, 0, 1, 2, 3, 4, 5]; // Sun..Sat -> Seg(0)..Sáb(5)
-    const idx = map[new Date().getDay()];
+    // BFit Dance acontece às terças: destaca "Ter"
     const kids = host.children;
-    (kids[idx] || kids[0]).classList.add("is-today");
+    if (kids[1]) kids[1].classList.add("is-today");
   })();
 
   $$("[data-checkin]").forEach((b) => {
