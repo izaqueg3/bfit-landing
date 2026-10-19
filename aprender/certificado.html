@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="theme-color" content="#000000" />
+<title>Certificado de conclusão interno | BFit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Montserrat:wght@500;600;700;800;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="icon" href="/favicon.png" type="image/png" />
+<link rel="stylesheet" href="css/learn.css" />
+<link rel="stylesheet" href="css/cert.css" />
+</head>
+<body>
+<div id="topbar"></div>
+<main class="cwrap">
+  <div class="cbar"><button class="btn btn--gold" id="print" type="button">Imprimir / salvar em PDF</button><a class="btn btn--ghost" href="quiz.html">Voltar à avaliação</a></div>
+  <article class="cert" id="cert" aria-label="Certificado de conclusão interno" hidden>
+    <span class="cert__glow"></span><span class="cert__glow cert__glow--b"></span>
+    <div class="cert__logo"><img src="/logo.png" alt="BFit Academias" /></div>
+    <div class="cert__k">Academia BFit · Capacitação interna</div>
+    <h1>Certificado de conclusão interno</h1>
+    <p class="cert__t">Certificamos que</p>
+    <div class="cert__n" id="cName"></div>
+    <p class="cert__t">concluiu os 10 módulos do minicurso interno</p>
+    <p class="cert__c">“Da ciência à prescrição individualizada”</p>
+    <p class="cert__t">baseado na II Conferência Capixaba de Personal Trainer (CREF22/ES) e foi aprovado(a) na avaliação final.</p>
+    <div class="cert__m"><div><b id="cNota"></b><span>Nota</span></div><div><b id="cData"></b><span>Data</span></div></div>
+    <div class="cert__sig">Izaque Braga<small>CREF 14400-G/ES · BFit Academias</small></div>
+    <p class="cert__f">Certificado interno de capacitação da equipe BFit. Material complementar independente, sem endosso formal do CREF22/ES ou dos palestrantes.</p>
+  </article>
+  <div class="card" id="denied" hidden style="text-align:center;padding:2rem"><h1 class="h2">Certificado indisponível</h1><p class="muted" style="margin:.8rem 0 1.4rem">O certificado é liberado depois da aprovação na avaliação final (mínimo de 7 acertos).</p><a class="btn btn--gold" href="quiz.html">Ir para a avaliação</a></div>
+</main>
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/common.js"></script>
+<script>
+(function () {
+  var $ = BF.$;
+  BF.boot({ active: "quiz", require: "auth" }).then(function (s) {
+    return BFitAPI.getMyAttempts().then(function (a) {
+      var ok = a.filter(function (x) { return x.aprovado; })[0];
+      if (!ok) { $("#denied").hidden = false; $("#print").hidden = true; return; }
+      $("#cName").textContent = s.user.nome; $("#cNota").textContent = ok.acertos + "/10";
+      $("#cData").textContent = BF.fmtLong(ok.created_at); $("#cert").hidden = false;
+      document.title = "Certificado · " + s.user.nome + " · BFit";
+      $("#print").addEventListener("click", function () { window.print(); });
+    });
+  }).catch(function (e) { console.warn(e); });
+})();
+</script>
+</body>
+</html>

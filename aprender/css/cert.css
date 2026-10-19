@@ -1,0 +1,29 @@
+.cwrap{width:min(100% - 1.5rem,1060px);margin:0 auto;padding:1.4rem 0 3rem}
+.cbar{display:flex;gap:.7rem;justify-content:center;margin-bottom:1.2rem;flex-wrap:wrap}
+.cert{position:relative;background:#FAF9F5;color:#151515;border-radius:18px;padding:clamp(1.6rem,5vw,3.6rem);overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6);aspect-ratio:auto;text-align:center}
+.cert::before{content:"";position:absolute;inset:clamp(8px,1.6vw,16px);border:2px solid #DFA624;border-radius:10px;pointer-events:none}
+.cert::after{content:"";position:absolute;inset:clamp(14px,2.4vw,24px);border:1px solid rgba(223,166,36,.5);border-radius:6px;pointer-events:none}
+.cert__glow{position:absolute;right:-90px;top:-90px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(223,166,36,.28),transparent 65%)}
+.cert__glow--b{right:auto;left:-110px;top:auto;bottom:-110px;background:radial-gradient(circle,rgba(139,164,128,.3),transparent 65%)}
+.cert > *{position:relative;z-index:1}
+.cert__logo{display:inline-block;background:#000;padding:.7rem 1.3rem;border-radius:12px;margin-bottom:1.4rem}
+.cert__logo img{height:44px;width:auto}
+.cert__k{font:800 clamp(.64rem,2vw,.8rem) var(--display);letter-spacing:.3em;color:#a97a12;text-transform:uppercase}
+.cert h1{font:900 clamp(1.4rem,5.4vw,3rem)/1.1 var(--display);margin:.7rem 0 1.4rem;letter-spacing:-.01em}
+.cert__t{font-size:clamp(.9rem,2.4vw,1.1rem);color:#444}
+.cert__n{font:800 clamp(1.5rem,6.5vw,3.2rem)/1.15 var(--display);margin:.6rem 0 .8rem;color:#111;border-bottom:2px solid #DFA624;display:inline-block;padding:0 .5rem .3rem;max-width:100%;overflow-wrap:anywhere}
+.cert__c{font:700 clamp(1rem,3vw,1.4rem) var(--display);color:#a97a12;margin:.5rem 0 1.4rem}
+.cert__m{display:flex;justify-content:center;gap:clamp(1rem,5vw,3rem);margin:1.4rem 0;flex-wrap:wrap}
+.cert__m div b{display:block;font:900 clamp(1.4rem,5vw,2.2rem) var(--display);color:#111} .cert__m div span{font:700 .64rem var(--display);letter-spacing:.18em;text-transform:uppercase;color:#777}
+.cert__sig{margin:2rem auto 0;max-width:340px;border-top:1.5px solid #151515;padding-top:.5rem;font:700 .85rem var(--display)}
+.cert__sig small{display:block;font:400 .74rem var(--font);color:#555}
+.cert__f{margin-top:1.4rem;font-size:.7rem;color:#777;max-width:68ch;margin-inline:auto}
+@media print{
+  @page{size:A4 landscape;margin:8mm}
+  html,body{background:#fff!important}
+  body::before,body::after{display:none!important}
+  .cbar,.mini-foot{display:none!important}
+  .cwrap{width:100%;padding:0}
+  .cert{box-shadow:none;border-radius:0;padding:12mm 16mm;page-break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .cert__logo{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}

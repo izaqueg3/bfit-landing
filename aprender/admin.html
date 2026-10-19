@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="theme-color" content="#000000" />
+<title>Painel do administrador | Área de Aprendizado BFit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Montserrat:wght@500;600;700;800;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="icon" href="/favicon.png" type="image/png" />
+<link rel="stylesheet" href="css/learn.css" />
+<link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+<div id="topbar"></div>
+<main class="awrap">
+  <div class="ahead">
+    <div><span class="eyebrow">Painel do administrador</span><h1 class="h2">Acompanhamento da <span class="gold">equipe</span></h1></div>
+    <div style="display:flex;gap:.6rem;flex-wrap:wrap"><button class="btn btn--ghost btn--sm" id="reload" type="button">↻ Atualizar</button><button class="btn btn--gold btn--sm" id="csv" type="button">Exportar CSV</button></div>
+  </div>
+  <div id="aerr"></div>
+  <section class="akpis" id="kpis" aria-label="Indicadores"></section>
+  <section class="agrid">
+    <div class="card"><div class="ph"><h3>Status da equipe</h3><div class="seg" role="group" aria-label="Tipo de gráfico"><button type="button" id="mDonut" aria-pressed="true">Rosca</button><button type="button" id="mBars" aria-pressed="false">Barras</button></div></div><div id="chart"></div></div>
+    <div class="card"><div class="ph"><h3>Como ler o status</h3></div>
+      <ul class="leg" style="gap:.8rem;font-size:.86rem;color:var(--muted)">
+        <li><i style="background:#6b6b6b"></i><span><b style="margin:0;color:#fff;font-size:.86rem">Não iniciou</b> · nenhum módulo concluído e nenhuma tentativa.</span></li>
+        <li><i style="background:var(--gold)"></i><span><b style="margin:0;color:#fff;font-size:.86rem">Em andamento</b> · já começou o curso ou a prova e ainda tem tentativas.</span></li>
+        <li><i style="background:var(--bad)"></i><span><b style="margin:0;color:#fff;font-size:.86rem">Reprovado</b> · usou as 3 tentativas sem chegar a 7 acertos.</span></li>
+        <li><i style="background:var(--ok)"></i><span><b style="margin:0;color:#fff;font-size:.86rem">Aprovado</b> · atingiu 7 acertos ou mais.</span></li>
+      </ul>
+      <p class="cap">“Concluíram o curso” conta quem marcou os 10 módulos. A média das notas considera a melhor nota de quem já fez a avaliação.</p>
+    </div>
+  </section>
+  <section class="card" aria-label="Membros">
+    <div class="ph"><h3>Membros da equipe</h3></div>
+    <div class="tools">
+      <label class="sr" for="q">Buscar</label><input class="input" id="q" type="search" placeholder="Buscar por nome ou e-mail" autocomplete="off" />
+      <label class="sr" for="fs">Filtrar status</label><select class="input" id="fs"><option value="">Todos os status</option><option value="nao">Não iniciou</option><option value="and">Em andamento</option><option value="rep">Reprovado</option><option value="apr">Aprovado</option></select>
+      <span class="count" id="count" aria-live="polite"></span>
+    </div>
+    <div class="tw"><table class="t" id="tbl"><thead><tr></tr></thead><tbody></tbody></table></div>
+  </section>
+</main>
+<div class="dr-bd" id="drBd"></div>
+<aside class="dr" id="dr" role="dialog" aria-modal="true" aria-labelledby="drT" aria-hidden="true"><button class="dr__x" id="drX" type="button" aria-label="Fechar">×</button><div id="drC"></div></aside>
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/common.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>
