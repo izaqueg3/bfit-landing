@@ -52,7 +52,7 @@ const COLORS=['#DFA624','#6fb3ff','#ff8fb1','#9fd36b','#c49bff','#ffb36b','#5fd4
 const A=10,B=44;let S;
 const fmt=i=>String(Math.floor(i/2)).padStart(2,'0')+':'+(i%2?'30':'00');
 const dur=n=>{const h=Math.floor(n/2),m=n%2?30:0;return n?(h?h+'h':'')+(m?(h?'':'')+m+'min':''):'0h'};
-let S=null;const isOpen=i=>S.open.some(([a,b])=>i>=a&&i<b);
+const isOpen=i=>S.open.some(([a,b])=>i>=a&&i<b);
 const opts=(v,min,max)=>{let h='';for(let i=min;i<=max;i++)h+=`<option value="${i}"${i==v?' selected':''}>${fmt(i)}</option>`;return h};
 const col=c=>c==0?'#7a1010':c==1?'#ff5c5c':c==2?'#f0c14b':c==3?'#9fd36b':'#3fbf7f';
 function slots(){const r=[];for(let i=A;i<B;i++){const who=S.people.filter(p=>p.s.some(([a,b])=>i>=a&&i<b)).map(p=>p.n||'(sem nome)');r.push({i,open:isOpen(i),who})}return r}
