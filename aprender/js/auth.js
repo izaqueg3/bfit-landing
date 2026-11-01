@@ -3,7 +3,7 @@
   var $ = BF.$, api = window.BFitAPI;
   var params = new URLSearchParams(location.search);
   var next = params.get("next") || "course.html";
-  if (!/^[a-z]+\.html(#[\w-]*)?$/i.test(next)) next = "course.html";
+  if (!/^[a-z]+\.html(#[\w-]*)?$/i.test(next) && next !== "/escala/") next = "course.html";
 
   function show(kind, text) { $("#msg").innerHTML = text ? '<div class="msg msg--' + kind + '" role="alert">' + BF.esc(text) + "</div>" : ""; }
   function tab(which) {
@@ -40,6 +40,7 @@
   BF.boot({ active: "home", require: null }).then(function (s) {
     if (api.mode === "mock") $("#demoHint").hidden = false;
     if (s) {
+      if (api.mode !== "mock") api.ready().then(function (sb) { return sb.rpc("pode_escala"); }).then(function (r) { if (r && r.data === true) $("#lnkEscala").hidden = false; }).catch(function () {});
       $("#viewAuth").hidden = true; $("#viewHello").hidden = false;
       $("#helloChip").innerHTML = "<i>" + BF.esc(BF.initials(s.user.nome)) + "</i><b>" + BF.esc(s.user.nome) + "</b>";
       $("#helloSub").textContent = s.user.email;

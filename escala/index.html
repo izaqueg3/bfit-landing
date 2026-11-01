@@ -31,36 +31,32 @@ table{width:100%;border-collapse:collapse;font-size:.9rem}td,th{padding:8px 6px;
 .op{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.op span{color:var(--m)}
 @media(max-width:600px){.row{grid-template-columns:80px 1fr}}
 @media print{body{background:#fff;color:#000}.np{display:none!important}.card,.k,.p{background:#fff;border-color:#ccc}.tlw{overflow:visible}.tl{min-width:0}.tr{background:#f2f2f2}.cl{background:#ddd}.k b,.gold,.eb{color:#a87700}td,th{border-color:#ccc}.note{background:#fff8e6;color:#000}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
-</style></head><body><div class="w">
+</style></head><body><div class="w" id="gate" style="text-align:center;padding-top:80px"><span class="eb">Área da equipe · BFit Academias</span><h1 id="gt" style="margin:12px 0">Verificando acesso…</h1><p class="sub" id="gm"></p><div id="gb"></div></div>
+<div class="w" id="app" hidden>
 <span class="eb">Área da equipe · BFit Academias</span>
 <h1>Escala de <span class="gold">atendimento</span></h1>
 <p class="sub">Simulador de segunda a sexta. Altere os horários e veja na hora quantas pessoas atendem em cada faixa.</p>
-<div class="bar np"><button class="gb" id="share">🔗 Copiar link com esta escala</button><button id="print">🖨️ Imprimir/PDF</button><button id="reset">↺ Restaurar escala original</button><a class="btn" href="/aprender/">← Área da equipe</a></div>
+<div class="bar np"><span id="stat" style="align-self:center;color:var(--m);font-size:.85rem">Carregando…</span><button id="print">🖨️ Imprimir/PDF</button><button id="out">Sair</button><button id="reset">↺ Restaurar escala original</button><a class="btn" href="/aprender/">← Área da equipe</a></div>
 <div class="cards card" id="sum"></div>
 <div class="card"><h2>Linha do tempo</h2><div class="tlw"><div class="tl" id="tl"></div></div>
 <div class="lg"><span><i style="background:#7a1010;outline:1px solid #ff4d4d"></i>0 pessoas (aberto)</span><span><i style="background:#ff5c5c"></i>1 pessoa</span><span><i style="background:#f0c14b"></i>2</span><span><i style="background:#9fd36b"></i>3</span><span><i style="background:#3fbf7f"></i>4+</span><span><i style="background:#2a2a2e"></i>fechado</span></div></div>
 <div class="card"><h2>Equipe e turnos</h2><div class="op" style="margin-bottom:12px"><span>Funcionamento:</span><span id="open"></span></div><div id="ppl"></div><button class="gb np" id="addp">+ Adicionar pessoa</button></div>
 <div class="card"><h2>Faixas de horário</h2><div style="overflow-x:auto"><table><thead><tr><th>Horário</th><th>Qtd.</th><th>Quem atende</th></tr></thead><tbody id="rng"></tbody></table></div></div>
 <p class="note">📅 <b>Sábados e feriados:</b> horário especial, sempre com <b>duas pessoas</b> em regime de escala durante todo o funcionamento.</p>
-<p class="sub np" style="font-size:.8rem">As alterações ficam salvas neste navegador. Para que outra pessoa veja a mesma escala, use “Copiar link com esta escala”.</p>
+<p class="sub np" style="font-size:.8rem">As alterações são salvas automaticamente e compartilhadas entre as pessoas autorizadas.</p>
 </div><div class="toast" id="toast"></div>
+<script src="/aprender/js/config.js"></script><script src="/aprender/js/api.js"></script>
 <script>
 const COLORS=['#DFA624','#6fb3ff','#ff8fb1','#9fd36b','#c49bff','#ffb36b','#5fd4c9','#f27a7a'];
-const ORIG={open:[[10,26],[30,44]],people:[{n:'Júlio',s:[[10,22],[32,40]]},{n:'Verônica',s:[[14,26],[30,38]]},{n:'Yasmim',s:[[20,26],[30,36]]},{n:'Mayra',s:[[30,36]]},{n:'Thamiris',s:[[36,44]]},{n:'Marcely',s:[[32,43]]}]};
 // slot index = half hours from 00:00; timeline 05:00(10) to 22:00(44)
 const A=10,B=44;let S;
 const fmt=i=>String(Math.floor(i/2)).padStart(2,'0')+':'+(i%2?'30':'00');
 const dur=n=>{const h=Math.floor(n/2),m=n%2?30:0;return n?(h?h+'h':'')+(m?(h?'':'')+m+'min':''):'0h'};
-const enc=o=>btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
-const dec=s=>JSON.parse(decodeURIComponent(escape(atob(s.replace(/-/g,'+').replace(/_/g,'/')))));
-function load(){try{if(location.hash.startsWith('#e=')){const o=dec(location.hash.slice(3));if(o.people)return o}}catch(e){}
-try{const o=JSON.parse(localStorage.getItem('bfit-escala'));if(o&&o.people)return o}catch(e){}return JSON.parse(JSON.stringify(ORIG))}
-function save(){localStorage.setItem('bfit-escala',JSON.stringify(S))}
-const isOpen=i=>S.open.some(([a,b])=>i>=a&&i<b);
+let S=null;const isOpen=i=>S.open.some(([a,b])=>i>=a&&i<b);
 const opts=(v,min,max)=>{let h='';for(let i=min;i<=max;i++)h+=`<option value="${i}"${i==v?' selected':''}>${fmt(i)}</option>`;return h};
 const col=c=>c==0?'#7a1010':c==1?'#ff5c5c':c==2?'#f0c14b':c==3?'#9fd36b':'#3fbf7f';
 function slots(){const r=[];for(let i=A;i<B;i++){const who=S.people.filter(p=>p.s.some(([a,b])=>i>=a&&i<b)).map(p=>p.n||'(sem nome)');r.push({i,open:isOpen(i),who})}return r}
-function render(){save();const sl=slots(),pct=i=>(i-A)/(B-A)*100;
+function render(){save();if(!S)return;const sl=slots(),pct=i=>(i-A)/(B-A)*100;
 // timeline
 let h='<div class="row"><div></div><div class="ax">';for(let i=A;i<=B;i+=2)h+=`<i style="left:${pct(i)}%">${String(i/2).padStart(2,'0')}h</i>`;h+='</div></div>';
 const closed=[];let st=null;for(let i=A;i<=B;i++){const o=i<B&&isOpen(i);if(!o&&st===null&&i<B)st=i;if((o||i==B)&&st!==null){closed.push([st,i]);st=null}}
@@ -89,9 +85,20 @@ else if(d.ds!==undefined)S.people[d.p].s.splice(d.ds,1);
 else if(d.as!==undefined){const s=S.people[d.as].s,l=s[s.length-1];const a=l?Math.min(B-2,l[1]+2):30;s.push([a,Math.min(B,a+4)])}
 else return;editor();render()});
 addp.onclick=()=>{S.people.push({n:'Nova pessoa',s:[[30,36]]});editor();render()};
-reset.onclick=()=>{if(confirm('Voltar para a escala original? As alterações atuais serão perdidas.')){S=JSON.parse(JSON.stringify(ORIG));history.replaceState(null,'',location.pathname);editor();render()}};
+reset.onclick=()=>{if(confirm('Voltar para a escala original? As alterações atuais serão perdidas para todos.')&&S.orig){const o=S.orig;S=JSON.parse(JSON.stringify(o));S.orig=o;editor();render()}};
 print.onclick=()=>window.print();
-share.onclick=async()=>{const u=location.origin+location.pathname+'#e='+enc(S);history.replaceState(null,'',u);try{await navigator.clipboard.writeText(u);toastMsg('Link copiado! Envie para a equipe.')}catch(e){prompt('Copie o link:',u)}};
 function toastMsg(m){toast.textContent=m;toast.style.display='block';setTimeout(()=>toast.style.display='none',2500)}
-S=load();editor();render();
+let sb,me,tmr,lastSent='';const hm=d=>new Date(d).toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+function stat(r){document.getElementById('stat').textContent='Salvo às '+hm(r.updated_at)+' por '+(r.updated_by_nome||'—')}
+function save(){if(!sb)return;const j=JSON.stringify(S);if(j===lastSent)return;document.getElementById('stat').textContent='Salvando…';clearTimeout(tmr);tmr=setTimeout(async()=>{lastSent=j;const {data,error}=await sb.from('escala_atendimento').update({estado:S,updated_at:new Date().toISOString(),updated_by:me.id,updated_by_nome:me.nome}).eq('id',1).select().single();if(error){document.getElementById('stat').textContent='⚠️ Erro ao salvar';toastMsg('Não foi possível salvar: '+error.message);lastSent=''}else stat(data)},800)}
+function gate(t,m,btn){gt.textContent=t;gm.textContent=m;gb.innerHTML=btn||''}
+const LOGIN='/aprender/index.html?next='+encodeURIComponent('/escala/');
+(async()=>{try{await BFitAPI.ready();sb=await BFitAPI.ready();const ss=await BFitAPI.getSession();
+if(!ss){location.replace(LOGIN);gate('Acesso restrito','Entre com seu login da área da equipe.','<a class="btn gb" href="'+LOGIN+'">Entrar</a>');return}
+me=ss.user;const {data,error}=await sb.from('escala_atendimento').select('*').eq('id',1).maybeSingle();
+if(error||!data){gate('Acesso restrito','Sua conta ('+me.email+') não tem permissão para a escala de atendimento. Fale com a gerência.','<a class="btn" href="/aprender/">← Área da equipe</a>');sb=null;return}
+S=data.estado;lastSent=JSON.stringify(S);document.getElementById('gate').hidden=true;document.getElementById('app').hidden=false;editor();render();stat(data);
+out.onclick=()=>BFitAPI.signOut().then(()=>location.replace(LOGIN));
+sb.channel('escala').on('postgres_changes',{event:'UPDATE',schema:'public',table:'escala_atendimento'},p=>{const r=p.new;if(r.updated_by===me.id)return;const j=JSON.stringify(r.estado);if(j===JSON.stringify(S))return;if(document.activeElement&&document.activeElement.classList.contains('nm'))return;S=r.estado;lastSent=j;editor();render();stat(r);toastMsg('Escala atualizada por '+(r.updated_by_nome||'outra pessoa'))}).subscribe();
+}catch(e){gate('Erro ao carregar','Verifique a internet e recarregue a página. ('+e.message+')')}})();
 </script></body></html>
