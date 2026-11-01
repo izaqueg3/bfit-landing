@@ -143,7 +143,8 @@
     <div class="scroll-progress" aria-hidden="true"><i data-progress></i></div>
   </header>
 
-  <div class="mobile-nav" id="mobile-nav">
+  <div class="mobile-nav" id="mobile-nav" data-lenis-prevent data-lenis-prevent-touch>
+  <style>#mobile-nav{-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y;height:calc(100dvh - var(--nav-h));bottom:auto}</style>
     <nav class="mobile-nav__links" aria-label="Menu mobile">
       <a class="mobile-nav__link" href="#inicio">Início</a>
       <a class="mobile-nav__link" href="#vantagens">Vantagens</a>
