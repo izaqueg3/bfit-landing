@@ -144,6 +144,7 @@
   </header>
 
   <div class="mobile-nav" id="mobile-nav" data-lenis-prevent data-lenis-prevent-touch>
+  <script>(function(){var m=document.getElementById("mobile-nav");["wheel","touchstart","touchmove","touchend"].forEach(function(t){m.addEventListener(t,function(e){e.stopPropagation();},{passive:true});});})();</script>
   <style>#mobile-nav{-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y;height:calc(100dvh - var(--nav-h));bottom:auto}</style>
     <nav class="mobile-nav__links" aria-label="Menu mobile">
       <a class="mobile-nav__link" href="#inicio">Início</a>
