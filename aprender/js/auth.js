@@ -3,7 +3,7 @@
   var $ = BF.$, api = window.BFitAPI;
   var params = new URLSearchParams(location.search);
   var next = params.get("next") || "course.html";
-  if (!/^[a-z]+\.html(#[\w-]*)?$/i.test(next) && next !== "/escala/") next = "course.html";
+  if (!/^[a-z]+\.html(#[\w-]*)?$/i.test(next) && next !== "/escala/" && next !== "/equipe/") next = "course.html";
 
   function show(kind, text) { $("#msg").innerHTML = text ? '<div class="msg msg--' + kind + '" role="alert">' + BF.esc(text) + "</div>" : ""; }
   function tab(which) {
