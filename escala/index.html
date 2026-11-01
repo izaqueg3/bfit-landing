@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#000000">
+<title>Escala de Atendimento | BFit Academias</title><link rel="icon" href="/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--g:#DFA624;--bg:#0b0b0c;--c1:#151517;--c2:#1d1d20;--bd:#2a2a2e;--t:#f3f1ea;--m:#9a978e}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(1200px 500px at 50% -200px,#2a2108,transparent),var(--bg);color:var(--t);font:15px/1.45 Roboto,system-ui,sans-serif}
+.w{max-width:1180px;margin:0 auto;padding:20px 14px 60px}h1,h2,h3{font-family:Montserrat,sans-serif;margin:0}
+h1{font-size:clamp(1.5rem,4vw,2.3rem);font-weight:900}.gold{color:var(--g)}.eb{color:var(--g);font:700 .75rem Montserrat;letter-spacing:.14em;text-transform:uppercase}
+.sub{color:var(--m);margin:6px 0 16px}.card{background:var(--c1);border:1px solid var(--bd);border-radius:16px;padding:16px;margin:14px 0}
+h2{font-size:1.1rem;margin-bottom:12px}.bar{display:flex;flex-wrap:wrap;gap:8px}
+button,.btn{font:700 .85rem Montserrat;border-radius:10px;border:1px solid var(--bd);background:var(--c2);color:var(--t);padding:9px 13px;cursor:pointer}
+.gb{background:linear-gradient(135deg,#f0c14b,#DFA624 60%,#b8841a);color:#111;border:0}button.x{padding:6px 9px;color:#ff8b8b;background:transparent}
+select{background:#0f0f11;color:var(--t);border:1px solid var(--bd);border-radius:8px;padding:6px 4px;font:500 .9rem Roboto}
+input.nm{background:#0f0f11;color:var(--t);border:1px solid var(--bd);border-radius:8px;padding:7px 9px;font:700 .95rem Montserrat;width:100%;min-width:0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}.k{background:var(--c2);border:1px solid var(--bd);border-radius:14px;padding:12px}
+.k b{display:block;font:900 1.6rem Montserrat;color:var(--g)}.k small{color:var(--m)}.k.r b{color:#ff6b6b}
+.p{border:1px solid var(--bd);border-radius:12px;padding:10px;margin-bottom:10px;background:var(--c2)}.ph{display:flex;gap:8px;align-items:center}
+.dot{width:12px;height:12px;border-radius:50%;flex:none}.sh{display:flex;align-items:center;gap:6px;margin-top:8px;flex-wrap:wrap}.sh span{color:var(--m)}
+.tlw{overflow-x:auto;-webkit-overflow-scrolling:touch}.tl{min-width:760px}.row{display:grid;grid-template-columns:110px 1fr;align-items:center;height:34px}
+.lb{font:700 .8rem Montserrat;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:6px}.tr{position:relative;height:24px;background:#101012;border-radius:6px}
+.cl{position:absolute;top:0;bottom:0;background:repeating-linear-gradient(45deg,#1b1b1e 0 6px,#141416 6px 12px)}
+.bk{position:absolute;top:3px;bottom:3px;border-radius:5px;font:700 .68rem Montserrat;color:#111;display:flex;align-items:center;justify-content:center;overflow:hidden;white-space:nowrap}
+.ax{position:relative;height:18px;font-size:.7rem;color:var(--m)}.ax i{position:absolute;transform:translateX(-50%);font-style:normal}
+.cv{display:flex;height:30px;gap:1px}.cv div{flex:1;border-radius:3px;font:700 .65rem Montserrat;display:flex;align-items:center;justify-content:center;color:#111}
+.lg{display:flex;flex-wrap:wrap;gap:10px;font-size:.78rem;color:var(--m);margin-top:10px}.lg i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-2px;margin-right:4px}
+table{width:100%;border-collapse:collapse;font-size:.9rem}td,th{padding:8px 6px;border-bottom:1px solid var(--bd);text-align:left;vertical-align:top}th{color:var(--m);font:600 .75rem Montserrat;text-transform:uppercase}
+.pill{display:inline-block;min-width:26px;text-align:center;border-radius:20px;padding:2px 8px;font:800 .8rem Montserrat;color:#111}
+.note{border-left:3px solid var(--g);padding:10px 12px;background:#1a1609;border-radius:8px;color:#e9dcb4}.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--g);color:#111;font:700 .9rem Montserrat;padding:10px 16px;border-radius:10px;display:none;z-index:9}
+.op{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.op span{color:var(--m)}
+@media(max-width:600px){.row{grid-template-columns:80px 1fr}}
+@media print{body{background:#fff;color:#000}.np{display:none!important}.card,.k,.p{background:#fff;border-color:#ccc}.tlw{overflow:visible}.tl{min-width:0}.tr{background:#f2f2f2}.cl{background:#ddd}.k b,.gold,.eb{color:#a87700}td,th{border-color:#ccc}.note{background:#fff8e6;color:#000}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style></head><body><div class="w">
+<span class="eb">Área da equipe · BFit Academias</span>
+<h1>Escala de <span class="gold">atendimento</span></h1>
+<p class="sub">Simulador de segunda a sexta. Altere os horários e veja na hora quantas pessoas atendem em cada faixa.</p>
+<div class="bar np"><button class="gb" id="share">🔗 Copiar link com esta escala</button><button id="print">🖨️ Imprimir/PDF</button><button id="reset">↺ Restaurar escala original</button><a class="btn" href="/aprender/">← Área da equipe</a></div>
+<div class="cards card" id="sum"></div>
+<div class="card"><h2>Linha do tempo</h2><div class="tlw"><div class="tl" id="tl"></div></div>
+<div class="lg"><span><i style="background:#7a1010;outline:1px solid #ff4d4d"></i>0 pessoas (aberto)</span><span><i style="background:#ff5c5c"></i>1 pessoa</span><span><i style="background:#f0c14b"></i>2</span><span><i style="background:#9fd36b"></i>3</span><span><i style="background:#3fbf7f"></i>4+</span><span><i style="background:#2a2a2e"></i>fechado</span></div></div>
+<div class="card"><h2>Equipe e turnos</h2><div class="op" style="margin-bottom:12px"><span>Funcionamento:</span><span id="open"></span></div><div id="ppl"></div><button class="gb np" id="addp">+ Adicionar pessoa</button></div>
+<div class="card"><h2>Faixas de horário</h2><div style="overflow-x:auto"><table><thead><tr><th>Horário</th><th>Qtd.</th><th>Quem atende</th></tr></thead><tbody id="rng"></tbody></table></div></div>
+<p class="note">📅 <b>Sábados e feriados:</b> horário especial, sempre com <b>duas pessoas</b> em regime de escala durante todo o funcionamento.</p>
+<p class="sub np" style="font-size:.8rem">As alterações ficam salvas neste navegador. Para que outra pessoa veja a mesma escala, use “Copiar link com esta escala”.</p>
+</div><div class="toast" id="toast"></div>
+<script>
+const COLORS=['#DFA624','#6fb3ff','#ff8fb1','#9fd36b','#c49bff','#ffb36b','#5fd4c9','#f27a7a'];
+const ORIG={open:[[10,26],[30,44]],people:[{n:'Júlio',s:[[10,22],[32,40]]},{n:'Verônica',s:[[14,26],[30,38]]},{n:'Yasmim',s:[[20,26],[30,36]]},{n:'Mayra',s:[[30,36]]},{n:'Thamiris',s:[[36,44]]},{n:'Marcely',s:[[32,43]]}]};
+// slot index = half hours from 00:00; timeline 05:00(10) to 22:00(44)
+const A=10,B=44;let S;
+const fmt=i=>String(Math.floor(i/2)).padStart(2,'0')+':'+(i%2?'30':'00');
+const dur=n=>{const h=Math.floor(n/2),m=n%2?30:0;return n?(h?h+'h':'')+(m?(h?'':'')+m+'min':''):'0h'};
+const enc=o=>btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+const dec=s=>JSON.parse(decodeURIComponent(escape(atob(s.replace(/-/g,'+').replace(/_/g,'/')))));
+function load(){try{if(location.hash.startsWith('#e=')){const o=dec(location.hash.slice(3));if(o.people)return o}}catch(e){}
+try{const o=JSON.parse(localStorage.getItem('bfit-escala'));if(o&&o.people)return o}catch(e){}return JSON.parse(JSON.stringify(ORIG))}
+function save(){localStorage.setItem('bfit-escala',JSON.stringify(S))}
+const isOpen=i=>S.open.some(([a,b])=>i>=a&&i<b);
+const opts=(v,min,max)=>{let h='';for(let i=min;i<=max;i++)h+=`<option value="${i}"${i==v?' selected':''}>${fmt(i)}</option>`;return h};
+const col=c=>c==0?'#7a1010':c==1?'#ff5c5c':c==2?'#f0c14b':c==3?'#9fd36b':'#3fbf7f';
+function slots(){const r=[];for(let i=A;i<B;i++){const who=S.people.filter(p=>p.s.some(([a,b])=>i>=a&&i<b)).map(p=>p.n||'(sem nome)');r.push({i,open:isOpen(i),who})}return r}
+function render(){save();const sl=slots(),pct=i=>(i-A)/(B-A)*100;
+// timeline
+let h='<div class="row"><div></div><div class="ax">';for(let i=A;i<=B;i+=2)h+=`<i style="left:${pct(i)}%">${String(i/2).padStart(2,'0')}h</i>`;h+='</div></div>';
+const closed=[];let st=null;for(let i=A;i<=B;i++){const o=i<B&&isOpen(i);if(!o&&st===null&&i<B)st=i;if((o||i==B)&&st!==null){closed.push([st,i]);st=null}}
+const cl=closed.map(([a,b])=>`<div class="cl" style="left:${pct(a)}%;width:${pct(b)-pct(a)}%"></div>`).join('');
+S.people.forEach((p,k)=>{h+=`<div class="row"><div class="lb" style="color:${COLORS[k%8]}">${esc(p.n)}</div><div class="tr">${cl}${p.s.map(([a,b])=>`<div class="bk" style="left:${pct(a)}%;width:${pct(b)-pct(a)}%;background:${COLORS[k%8]}">${fmt(a)}–${fmt(b)}</div>`).join('')}</div></div>`});
+h+=`<div class="row" style="height:42px"><div class="lb gold">Cobertura</div><div class="cv" id="cov">${sl.map(s=>`<div title="${fmt(s.i)}–${fmt(s.i+1)}: ${s.who.length} (${s.who.join(', ')})" style="background:${s.open?col(s.who.length):'#2a2a2e'};${s.open&&!s.who.length?'outline:1px solid #ff4d4d;color:#fff':''}">${s.open?s.who.length:''}</div>`).join('')}</div></div>`;
+document.getElementById('tl').innerHTML=h;
+// ranges
+const R=[];sl.forEach(s=>{const key=s.open+'|'+s.who.join(',');const l=R[R.length-1];if(l&&l.key==key&&l.b==s.i)l.b++;else R.push({key,a:s.i,b:s.i+1,open:s.open,who:s.who})});
+document.getElementById('rng').innerHTML=R.map(r=>`<tr><td>${fmt(r.a)}–${fmt(r.b)}</td><td>${r.open?`<span class="pill" style="background:${col(r.who.length)};${r.who.length?'':'color:#fff'}">${r.who.length}</span>`:'—'}</td><td>${r.open?(r.who.length?esc(r.who.join(', ')):'⚠️ Ninguém atendendo'):'<span style="color:var(--m)">Fechado</span>'+(r.who.length?' · '+esc(r.who.join(', ')):'')}</td></tr>`).join('');
+// summary
+const os=sl.filter(s=>s.open),mx=Math.max(0,...os.map(s=>s.who.length)),pk=R.filter(r=>r.open&&r.who.length==mx).map(r=>fmt(r.a)+'–'+fmt(r.b));
+const one=os.filter(s=>s.who.length==1).length,zero=os.filter(s=>!s.who.length).length;
+document.getElementById('sum').innerHTML=`<div class="k"><small>Pico de atendimento</small><b>${mx} pessoas</b><small>${pk.join(' · ')}</small></div><div class="k ${one?'r':''}"><small>Só 1 pessoa</small><b>${dur(one)}</b><small>${R.filter(r=>r.open&&r.who.length==1).map(r=>fmt(r.a)+'–'+fmt(r.b)+' ('+esc(r.who[0])+')').join(' · ')||'nenhum horário'}</small></div><div class="k ${zero?'r':''}"><small>Sem ninguém (aberto)</small><b>${dur(zero)}</b><small>${R.filter(r=>r.open&&!r.who.length).map(r=>fmt(r.a)+'–'+fmt(r.b)).join(' · ')||'tudo coberto ✔'}</small></div><div class="k"><small>Horas de funcionamento</small><b>${dur(os.length)}</b><small>${S.people.length} pessoas na equipe</small></div>`;
+}
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function editor(){document.getElementById('open').innerHTML=S.open.map(([a,b],j)=>`<select data-o="${j}" data-e="0">${opts(a,0,47)}</select><span>às</span><select data-o="${j}" data-e="1">${opts(b,1,48)}</select>${j==0?'<span>e</span>':''}`).join('');
+document.getElementById('ppl').innerHTML=S.people.map((p,k)=>`<div class="p"><div class="ph"><span class="dot" style="background:${COLORS[k%8]}"></span><input class="nm" data-n="${k}" value="${esc(p.n)}" aria-label="Nome"><button class="x np" data-dp="${k}" title="Remover pessoa">✕</button></div>${p.s.map(([a,b],j)=>`<div class="sh"><span>Turno ${j+1}:</span><select data-p="${k}" data-s="${j}" data-e="0">${opts(a,A,B-1)}</select><span>às</span><select data-p="${k}" data-s="${j}" data-e="1">${opts(b,A+1,B)}</select><button class="x np" data-p="${k}" data-ds="${j}" title="Remover turno">✕</button></div>`).join('')}<div class="sh np"><button data-as="${k}">+ Turno</button></div></div>`).join('');}
+document.addEventListener('change',e=>{const t=e.target,v=+t.value,d=t.dataset;
+if(d.o!==undefined){S.open[d.o][d.e]=v;if(S.open[d.o][0]>=S.open[d.o][1])S.open[d.o][1-d.e]=d.e==0?v+1:v-1}
+else if(d.s!==undefined){const s=S.people[d.p].s[d.s];s[d.e]=v;if(s[0]>=s[1]){if(d.e==0)s[1]=Math.min(B,v+1);else s[0]=Math.max(A,v-1)}editor()}else return;render()});
+document.addEventListener('input',e=>{if(e.target.dataset.n!==undefined){S.people[e.target.dataset.n].n=e.target.value;render()}});
+document.addEventListener('click',e=>{const d=e.target.dataset;
+if(d.dp!==undefined){if(confirm('Remover '+(S.people[d.dp].n||'esta pessoa')+'?'))S.people.splice(d.dp,1)}
+else if(d.ds!==undefined)S.people[d.p].s.splice(d.ds,1);
+else if(d.as!==undefined){const s=S.people[d.as].s,l=s[s.length-1];const a=l?Math.min(B-2,l[1]+2):30;s.push([a,Math.min(B,a+4)])}
+else return;editor();render()});
+addp.onclick=()=>{S.people.push({n:'Nova pessoa',s:[[30,36]]});editor();render()};
+reset.onclick=()=>{if(confirm('Voltar para a escala original? As alterações atuais serão perdidas.')){S=JSON.parse(JSON.stringify(ORIG));history.replaceState(null,'',location.pathname);editor();render()}};
+print.onclick=()=>window.print();
+share.onclick=async()=>{const u=location.origin+location.pathname+'#e='+enc(S);history.replaceState(null,'',u);try{await navigator.clipboard.writeText(u);toastMsg('Link copiado! Envie para a equipe.')}catch(e){prompt('Copie o link:',u)}};
+function toastMsg(m){toast.textContent=m;toast.style.display='block';setTimeout(()=>toast.style.display='none',2500)}
+S=load();editor();render();
+</script></body></html>
